@@ -1,0 +1,150 @@
+﻿@model Lifestyle_Preference_survey.ViewModel.UserInput;
+<link rel="stylesheet" href="/css/style.css" />
+@{
+    ViewData["Title"] = "Home Page";
+}
+<style>
+    #home{
+        color: rgb(35, 103, 176);
+    }
+</style>
+@if(TempData["message"]!=null){
+    <div class="alert alert-success">
+        @TempData["message"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"><span>&times;</span></button>
+    </div>
+}
+@if(TempData["error"]!=null){
+    <div class="alert alert-danger">
+        @TempData["error"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"><span>&times;</span></button>
+    </div>
+}
+<form asp-action="Index" method="post">
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="user-details">
+        <div class="input-lab">
+            <p>Personal Details</p>
+        </div>
+        <div class="input-box">
+            <div class="form-group">
+                <label asp-for="Fullnames" class="control-label"></label>
+                <input asp-for="Fullnames" class="form-control"/>
+                <span asp-validation-for="Fullnames" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control"/>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                <input asp-for="DateOfBirth" class="form-control" type="date"/>
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control"/>
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="favorite-food-wrapper">
+        <p id="food">What is your favorite food? </p>
+        <div id="food-validation" class="text-danger"></div>
+        <div class="options-wrapper">
+            <div class="option">
+                <div class="before-check"><input class="pe-1 food-option"  type="checkbox" asp-for="Pizza"></div>
+                <label asp-for="Pizza"></label>
+            </div>
+
+            <div class="option">
+                <div class="before-check"><input class="pe-1 food-option"  type="checkbox" asp-for="Pasta"></div>
+                <label asp-for="Pasta"></label>
+            </div>
+
+            <div class="option">
+                <div class="before-check"><input class="pe-1 food-option"  type="checkbox" asp-for="PapAndWors"></div>
+                <label asp-for="PapAndWors"></label>
+            </div>
+
+            <div class="option"> 
+                <div class="before-check"><input class="pe-1 food-option"  type="checkbox" asp-for="Other"></div>
+                <label asp-for="Other"></label>
+            </div>
+        </div>
+    </div>
+    <div class="ratings">
+        <p>Please rate your level of agreement on a scale from 1 to 5,a with 1 being "strongly agree" and 5 being "strongly disagree."</p>
+        <table>
+                <tr>
+                    <td style="background-color: #a3a1a1; border-color: black;"></td>
+                    <td style="background-color: #a3a1a1; border-color: black">Strongly Agree</td>
+                    <td style="background-color: #a3a1a1; border-color: black">Agree</td>
+                    <td style="background-color: #a3a1a1; border-color: black">Neutral</td>
+                    <td style="background-color: #a3a1a1; border-color: black">Disagree</td>
+                    <td style="background-color: #a3a1a1; border-color: black">Strongly Disagree</td>
+                </tr>
+                <tr>
+                    <td><div class="row-selection">I like to watch movies</div></td>
+                    <td><div class="before-check-radio"><input type="radio" asp-for="@Model.Movies" value="strongly_agree"></div></td>
+                    <td><div class="before-check-radio"><input type="radio" asp-for="@Model.Movies" value="agree"></div></td>
+                    <td><div class="before-check-radio"><input type="radio" asp-for="@Model.Movies" value="neutral"></div></td>
+                    <td><div class="before-check-radio"><input type="radio" asp-for="@Model.Movies" value="disagree"></div></td>
+                    <td><div class="before-check-radio"><input type="radio" asp-for="@Model.Movies" value="strongly_disagree"></div></td>
+                    <span asp-validation-for="Movies" class="text-danger"></span>
+                </tr>
+                <tr>
+                    <td><div class="row-selection">I like to listen to radio</div></td>
+                    <td><div class="before-check-radio"><input type="radio" asp-for="@Model.Radio" value="strongly_agree"></div></td>
+                    <td><div class="before-check-radio"><input type="radio" asp-for="@Model.Radio" value="agree"></div></td>
+                    <td><div class="before-check-radio"><input type="radio" asp-for="@Model.Radio" value="neutral"></div></td>
+                    <td><div class="before-check-radio"><input type="radio" asp-for="@Model.Radio" value="disagree"></div></td>
+                    <td><div class="before-check-radio"><input type="radio" asp-for="@Model.Radio" value="strongly_disagree"></div></td>
+                    <span asp-validation-for="Radio" class="text-danger"></span>
+                </tr>
+                <tr>
+                    <td><div class="row-selection">I like to eat out</div></td>
+                    <td><div class="before-check-radio"><input type="radio" asp-for="@Model.Out" value="strongly_agree"></div></td>
+                    <td><div class="before-check-radio"><input type="radio" asp-for="@Model.Out" value="agree"></div></td>
+                    <td><div class="before-check-radio"><input type="radio" asp-for="@Model.Out" value="neutral"></div></td>
+                    <td><div class="before-check-radio"><input type="radio" asp-for="@Model.Out" value="disagree"></div></td>
+                    <td><div class="before-check-radio"><input type="radio" asp-for="@Model.Out" value="strongly_disagree"></div></td>
+                    <span asp-validation-for="Out" class="text-danger"></span>
+                </tr>
+                <tr>
+                    <td><div class="row-selection">I like to watch TV</div></td>
+                    <td><div class="before-check-radio"></><input type="radio" asp-for="@Model.TV" value="strongly_agree" /></div></td>
+                    <td><div class="before-check-radio"><input type="radio" asp-for="@Model.TV" value="agree"></div></td>
+                    <td><div class="before-check-radio"><input type="radio" asp-for="@Model.TV" value="neutral"></div></td>
+                    <td><div class="before-check-radio"><input type="radio" asp-for="@Model.TV" value="disagree"></div></td>
+                    <td><div class="before-check-radio"><input type="radio" asp-for="@Model.TV" value="strongly_disagree"></div></td>
+                    <span asp-validation-for="TV" class="text-danger"></span>
+                </tr>
+         </table>
+    
+        
+    </div>
+    <div class="button-wrapper">
+        <button type="submit">SUBMIT</button>
+    </div>
+</form>
+@section Scripts {
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const checkboxes = document.querySelectorAll('.food-option');
+            const isChecked = Array.from(checkboxes).some(cb => cb.checked);
+            const validationMsg = document.getElementById('food-validation');
+            if (!isChecked) {
+                e.preventDefault();
+                validationMsg.textContent = "Please select at least one food option.";
+                return;
+            } else {
+                validationMsg.textContent = "";
+            }
+        });
+    </script>
+}

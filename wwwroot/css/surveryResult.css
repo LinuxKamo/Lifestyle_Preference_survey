@@ -1,0 +1,14 @@
+body{
+    display: grid;
+}
+.results{
+    display: grid;
+    padding-bottom:1rem;
+    align-items: start;
+}
+.results-wrapper{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5rem;
+    padding-right: 12rem;
+}

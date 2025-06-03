@@ -1,0 +1,78 @@
+﻿@model Lifestyle_Preference_survey.Models.SurveyResults;
+<link rel="stylesheet" href="~/css/surveryResult.css">
+<link rel="stylesheet" href="~/css/style.css">
+@{
+    ViewData["Title"] = "ViewSurveryResuls";
+}
+<style>
+    #home{
+        color: black;
+    }
+    #resuls{
+        color: rgb(35, 103, 176);
+    }
+</style>
+<body>
+    <center>
+        <h3 style="margin-bottom:1rem;">Survey Relsults</h3>
+    </center>
+    @if(Model.SurveyNumber>0){
+    <div class="results">
+        <div class="results-wrapper">
+            <p>Total number of surveys:</p>
+            <p>@Model.SurveyNumber</p>
+        </div>
+        <div class="results-wrapper">
+            <p>Average age: :</p>
+            <p>@Model.Avarage</p></div>
+        <div class="results-wrapper">
+            <p>oldest person who participated in survey: </p>
+            <p>@Model.Oldest years</p>
+        </div><div class="results-wrapper">
+            <p>Youngest person who participated in survey: </p>
+            <p>@Model.Youngest years</p>
+        </div>
+    </div>
+
+    <div class="results">
+        <div class="results-wrapper">
+            <p>Percent of number who like Pizza:</p>
+            <p>@Model.PercentOfPizza %</p>
+        </div>
+        <div class="results-wrapper">
+        <p>Percent of number who like Pasta:</p>
+            <p>@Model.PercentOfPasta %</p>
+        </div>
+        <div class="results-wrapper">
+            <p>Percent of number who like Pap and Wors: </p>
+            <p>@Model.PercentOfPapandWors %</p>
+        </div> 
+    </div>
+
+    
+    <div class="results">
+        <div class="results-wrapper">
+            <p>People who like to watch movies:</p>
+            <p style="place-self: start;">@Model.TotalMovies rating</p>
+        </div>
+        <div class="results-wrapper">
+            <p>People who like listen to radio:</p>
+            <p>@Model.Radio rating</p>
+        </div>
+        <div class="results-wrapper">
+            <p>People who like to eat out: </p>
+            <p>@Model.EatOut rating</p>
+        </div>
+        <div class="results-wrapper">
+        <p>People who like to watch TV: </p>
+        <p>@Model.TV ratings</p>
+    </div>
+    </div>
+    }
+    else{
+    <div class="results">
+            <center><h4>No Surveys Available.</h4></center>
+    </div>
+    }
+
+</body>
